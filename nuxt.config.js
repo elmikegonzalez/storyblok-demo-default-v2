@@ -38,7 +38,7 @@ export default defineNuxtConfig({
     https: true,
   },
 
-  devtools: { enabled: process.env.NUXT_DEVTOOLS_ENABLED === 'true' },
+  devtools: { enabled: false },
 
   vite: {
     plugins: [mkcert()],
