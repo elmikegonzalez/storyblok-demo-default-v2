@@ -228,7 +228,8 @@ watch(route, () => {
 }
 
 body {
-  @apply pt-32 text-primary-dark font-body;
+  @apply pt-32 font-body;
+  color: var(--headline-color);
 }
 
 section.page-section {
