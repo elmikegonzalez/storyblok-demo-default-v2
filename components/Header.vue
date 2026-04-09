@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   logo: Object,
   nav: Object,
   buttons: Object,
@@ -7,6 +7,13 @@ defineProps({
 });
 
 defineEmits(['toggleMobileNav']);
+
+const logoSrc = computed(() => {
+  if (props.logo?.filename && !props.logo.filename.includes('brand-new-day')) {
+    return props.logo.filename;
+  }
+  return '/wells-fargo-logo.svg';
+});
 
 const headerScrollClass = ref('');
 
@@ -24,16 +31,16 @@ onMounted(() => {
 
 <template>
   <header
-    class="fixed left-0 top-0 z-[99] h-32 w-full border-b border-primary-dark transition-all duration-300"
-    :class="[headerScrollClass, { 'bg-primary-dark': !light }]"
+    class="fixed left-0 top-0 z-[99] h-32 w-full transition-all duration-300"
+    :class="[headerScrollClass, { 'bg-primary-highlight': !light }]"
   >
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
     >
-      <NuxtLink v-if="logo?.filename" to="/" class="focus-ring flex shrink-0" aria-label="Return to homepage">
+      <NuxtLink to="/" class="focus-ring flex shrink-0" aria-label="Return to homepage">
         <img
-          :src="logo.filename"
-          :alt="logo.alt"
+          :src="logoSrc"
+          :alt="logo?.alt || 'Wells Fargo'"
           class="pointer-events-none max-h-[80px] w-full max-w-[180px] origin-left object-contain transition-transform duration-700 xl:max-w-[250px]"
         />
       </NuxtLink>
@@ -66,15 +73,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
-header:not(.bg-primary-dark) {
+header:not(.bg-primary-highlight) {
   @apply bg-[--nav-background-color];
 }
-header.scroll:not(.bg-primary-dark) {
+header.scroll:not(.bg-primary-highlight) {
   @apply bg-white;
 }
 
 header nav.main-nav a.router-link-exact-active::after {
-  @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-primary-dark;
+  @apply content-[''] absolute bottom-0 left-0 h-[5px] w-full bg-white;
 }
 
 header nav.main-nav ul {
