@@ -19,8 +19,7 @@ const url = computed(() => {
 
 const classes = computed(() => {
   let classes
-    = `focus-ring font-semibold inline-flex w-full sm:w-auto items-center justify-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-${
-      props.button.background_color}`;
+    = 'focus-ring font-semibold inline-flex w-full sm:w-auto items-center justify-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2';
 
   switch (props.button.size) {
     case 'small':
@@ -38,17 +37,21 @@ const classes = computed(() => {
   switch (props.button.style) {
     case 'ghost':
       classes
-        += ` bg-transparent text-${
-          props.button.background_color
+        += ` bg-transparent border-${
+          props.button.text_color
+        } text-${
+          props.button.text_color
         } hover:bg-${
-          props.button.background_color
+          props.button.text_color
         } hover:text-${
-          props.button.text_color}`;
+          props.button.background_color}`;
       break;
     case 'default':
     default:
       classes
-        += ` hover:scale-105 transform bg-${
+        += ` hover:scale-105 transform border-${
+          props.button.background_color
+        } bg-${
           props.button.background_color
         } text-${
           props.button.text_color}`;
