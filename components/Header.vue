@@ -32,7 +32,7 @@ onMounted(() => {
 <template>
   <header
     class="fixed left-0 top-0 z-[99] h-32 w-full transition-all duration-300"
-    :class="[headerScrollClass, { 'bg-primary-highlight': !light }]"
+    :class="[headerScrollClass, { 'header-dark': !light }]"
   >
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
@@ -73,10 +73,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
-header:not(.bg-primary-highlight) {
+header.header-dark {
+  background-color: var(--nav-background);
+}
+header:not(.header-dark) {
   @apply bg-[--nav-background-color];
 }
-header.scroll:not(.bg-primary-highlight) {
+header.scroll:not(.header-dark) {
   @apply bg-white;
 }
 

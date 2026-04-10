@@ -21,6 +21,9 @@ const defaultColors = {
   '--background-9': '#FFD5D3',
   '--background-10': '#D2FEC9',
   '--primary-dark': '#1F1F1F',
+  '--nav-background': '#1F1F1F',
+  '--footer-background': '#1F1F1F',
+  '--body-text': '#141414',
 };
 
 const defaultBorderRadiuses = {
@@ -80,6 +83,9 @@ const cssVariables = computed(() => {
     theme['--background-9'] = siteConfig.value.content.background_9_color?.color;
     theme['--background-10'] = siteConfig.value.content.background_10_color?.color;
     theme['--primary-dark'] = siteConfig.value.content.primary_dark_color?.color;
+    theme['--nav-background'] = siteConfig.value.content.nav_background_color?.color || theme['--primary-dark'];
+    theme['--footer-background'] = siteConfig.value.content.footer_background_color?.color || theme['--primary-dark'];
+    theme['--body-text'] = siteConfig.value.content.body_text_color?.color || '#141414';
     if (siteConfig.value.content.colored_headlines) {
       theme['--headline-color'] = siteConfig.value.content.primary_highlight_color?.color;
     }
@@ -229,7 +235,7 @@ watch(route, () => {
 
 body {
   @apply pt-32 font-body;
-  color: var(--headline-color);
+  color: var(--body-text, #141414);
 }
 
 section.page-section {

@@ -22,7 +22,7 @@ const textColor = computed(() => {
 });
 
 const backgroundColor = computed(() => {
-  return props.footerLight ? 'bg-primary-background' : 'bg-primary-dark';
+  return props.footerLight ? 'bg-primary-background' : 'footer-dark';
 });
 </script>
 
@@ -68,3 +68,9 @@ const backgroundColor = computed(() => {
     <Decoration3 v-if="decoration" fill="highlight-1" class="pointer-events-none absolute bottom-0 right-0 z-0" />
   </footer>
 </template>
+
+<style scoped>
+footer.footer-dark {
+  background-color: var(--footer-background);
+}
+</style>
